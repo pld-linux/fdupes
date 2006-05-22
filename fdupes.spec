@@ -1,4 +1,5 @@
 Summary:	Program identifying or deleting duplicate files
+Summary(pl):	Program identyfikuj±cy lub usuwaj±cy duplikaty plików
 Name:		fdupes
 Version:	1.40
 Release:	0.1
@@ -14,6 +15,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 fdupes is a program to scan directories for duplicate files, with
 options to list and delete them. It first compares file sizes and MD5
 signatures, and then performs a byte-by-byte check for verification.
+
+%description -l pl
+fdupes to program przeszukuj±cy katalogi pod k±tem duplikatów plików z
+mo¿liwo¶ci± wypisania lub usuniêcia ich. Najpierw porównuje rozmiary
+plików i sygnatury MD5, a nastêpnie przeprowadza sprawdzenie bajt po
+bajcie w celu weryfikacji.
 
 %prep
 %setup -q
