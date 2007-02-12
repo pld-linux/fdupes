@@ -1,5 +1,5 @@
 Summary:	Program identifying or deleting duplicate files
-Summary(pl.UTF-8):   Program identyfikujący lub usuwający duplikaty plików
+Summary(pl.UTF-8):	Program identyfikujący lub usuwający duplikaty plików
 Name:		fdupes
 Version:	1.40
 Release:	0.1
