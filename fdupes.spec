@@ -2,13 +2,13 @@ Summary:	Program identifying or deleting duplicate files
 Summary(pl.UTF-8):	Program identyfikujący lub usuwający duplikaty plików
 Name:		fdupes
 Version:	1.40
-Release:	1
+Release:	2
 License:	MIT
 Group:		Applications/File
-Source0:	http://netdial.caribe.net/~adrian2/programs/%{name}-%{version}.tar.gz
+Source0:	http://fdupes.googlecode.com/files/%{name}-%{version}.tar.gz
 # Source0-md5:	11de9ab4466089b6acbb62816b30b189
 Patch0:		%{name}-make.patch
-URL:		http://netdial.caribe.net/~adrian2/fdupes.html
+URL:		http://code.google.com/p/fdupes/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
