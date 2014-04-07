@@ -1,41 +1,28 @@
---- fdupes-1.40/Makefile~	2006-05-19 21:15:32.000000000 +0300
-+++ fdupes-1.40/Makefile	2006-05-19 21:15:34.000000000 +0300
-@@ -2,13 +2,13 @@
- # INSTALLDIR indicates directory where program is to be installed. 
- # Suggested values are "/usr/local/bin" or "/usr/bin".
+--- fdupes-1.51/Makefile~	2013-04-20 20:51:58.000000000 +0300
++++ fdupes-1.51/Makefile	2014-04-07 20:59:52.580658642 +0300
+@@ -56,7 +56,7 @@
+ # MAN_DIR indicates directory where the fdupes man page is to be 
+ # installed. Suggested value is "$(PREFIX)/man/man1"
  #
--INSTALLDIR = /usr/local/bin
-+INSTALLDIR = /usr/bin
+-MAN_BASE_DIR = $(PREFIX)/man
++MAN_BASE_DIR = $(PREFIX)/share/man
+ MAN_DIR = $(MAN_BASE_DIR)/man1
+ MAN_EXT = 1
  
- #
- # MANPAGEDIR indicates directory where the fdupes man page is to be 
- # installed. Suggested values are "/usr/local/man" or "/usr/man".
- #
--MANPAGEDIR = /usr/local/man
-+MANPAGEDIR = /usr/share/man
+@@ -103,12 +103,12 @@
+ 	$(CC) $(CFLAGS) -o fdupes $(OBJECT_FILES)
  
- #
- # VERSION determines the program's version number.
-@@ -30,16 +30,19 @@
- #
- #EXPERIMENTAL_RBTREE = -DEXPERIMENTAL_RBTREE
+ installdirs:
+-	test -d $(BIN_DIR) || $(MKDIR) $(BIN_DIR)
+-	test -d $(MAN_DIR) || $(MKDIR) $(MAN_DIR)
++	test -d $(DESTDIR)$(BIN_DIR) || $(MKDIR) $(DESTDIR)$(BIN_DIR)
++	test -d $(DESTDIR)$(MAN_DIR) || $(MKDIR) $(DESTDIR)$(MAN_DIR)
  
-+CFLAGS = -Wall
-+
- #####################################################################
- # no need to modify anything beyond this point                      #
- #####################################################################
+ install: fdupes installdirs
+-	$(INSTALL_PROGRAM)	fdupes   $(BIN_DIR)/$(PROGRAM_NAME)
+-	$(INSTALL_DATA)		fdupes.1 $(MAN_DIR)/$(PROGRAM_NAME).$(MAN_EXT)
++	$(INSTALL_PROGRAM)	fdupes   $(DESTDIR)$(BIN_DIR)/$(PROGRAM_NAME)
++	$(INSTALL_DATA)		fdupes.1 $(DESTDIR)$(MAN_DIR)/$(PROGRAM_NAME).$(MAN_EXT)
  
- fdupes: fdupes.c md5/md5.c	
--	gcc fdupes.c md5/md5.c -Wall -o fdupes -DVERSION=\"$(VERSION)\" $(EXTERNAL_MD5) $(EXPERIMENTAL_RBTREE)
-+	$(CC) fdupes.c md5/md5.c $(CFLAGS) -o fdupes -DVERSION=\"$(VERSION)\" $(EXTERNAL_MD5) $(EXPERIMENTAL_RBTREE)
- 
- install: fdupes
--	cp fdupes $(INSTALLDIR)
--	cp fdupes.1 $(MANPAGEDIR)/man1
-+	install -d $(DESTDIR)$(INSTALLDIR) $(DESTDIR)$(MANPAGEDIR)/man1
-+	cp fdupes $(DESTDIR)$(INSTALLDIR)
-+	cp fdupes.1 $(DESTDIR)$(MANPAGEDIR)/man1
- 
- tarball: clean
- 	tar --directory=.. -c -z -v -f ../fdupes-$(VERSION).tar.gz fdupes-$(VERSION)
+ clean:
+ 	$(RM) $(OBJECT_FILES)

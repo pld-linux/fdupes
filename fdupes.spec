@@ -1,14 +1,14 @@
 Summary:	Program identifying or deleting duplicate files
 Summary(pl.UTF-8):	Program identyfikujący lub usuwający duplikaty plików
 Name:		fdupes
-Version:	1.40
-Release:	2
+Version:	1.51
+Release:	1
 License:	MIT
 Group:		Applications/File
-Source0:	http://fdupes.googlecode.com/files/%{name}-%{version}.tar.gz
-# Source0-md5:	11de9ab4466089b6acbb62816b30b189
+Source0:	https://fdupes.googlecode.com/files/%{name}-%{version}.tar.gz
+# Source0-md5:	47d0410c90c9e51e450933ba35a32b62
 Patch0:		%{name}-make.patch
-URL:		http://code.google.com/p/fdupes/
+URL:		https://code.google.com/p/fdupes/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -29,11 +29,13 @@ bajcie w celu weryfikacji.
 %build
 %{__make} \
 	CC="%{__cc}" \
-	CFLAGS="%{rpmcflags}"
+	COMPILER_OPTIONS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %{__make} install \
+	PREFIX=%{_prefix} \
+	INSTALL="install -p" \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
