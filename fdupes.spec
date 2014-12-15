@@ -8,7 +8,7 @@ Group:		Applications/File
 Source0:	https://fdupes.googlecode.com/files/%{name}-%{version}.tar.gz
 # Source0-md5:	47d0410c90c9e51e450933ba35a32b62
 Patch0:		%{name}-make.patch
-URL:		https://code.google.com/p/fdupes/
+URL:		https://github.com/adrianlopezroche/fdupes
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
