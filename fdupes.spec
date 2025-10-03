@@ -2,7 +2,7 @@ Summary:	Program identifying or deleting duplicate files
 Summary(pl.UTF-8):	Program identyfikujący lub usuwający duplikaty plików
 Name:		fdupes
 Version:	1.51
-Release:	1
+Release:	2
 License:	MIT
 Group:		Applications/File
 Source0:	https://fdupes.googlecode.com/files/%{name}-%{version}.tar.gz
